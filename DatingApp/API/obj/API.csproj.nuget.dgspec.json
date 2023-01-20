@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tvasilev\\Desktop\\NgDemo\\DatingApp\\API\\API.csproj": {}
+    "C:\\Users\\tvasilev\\Desktop\\NgDemo\\NgDemo\\DatingApp\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tvasilev\\Desktop\\NgDemo\\DatingApp\\API\\API.csproj": {
+    "C:\\Users\\tvasilev\\Desktop\\NgDemo\\NgDemo\\DatingApp\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tvasilev\\Desktop\\NgDemo\\DatingApp\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\tvasilev\\Desktop\\NgDemo\\NgDemo\\DatingApp\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\tvasilev\\Desktop\\NgDemo\\DatingApp\\API\\API.csproj",
+        "projectPath": "C:\\Users\\tvasilev\\Desktop\\NgDemo\\NgDemo\\DatingApp\\API\\API.csproj",
         "packagesPath": "C:\\Users\\tvasilev\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tvasilev\\Desktop\\NgDemo\\DatingApp\\API\\obj\\",
+        "outputPath": "C:\\Users\\tvasilev\\Desktop\\NgDemo\\NgDemo\\DatingApp\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tvasilev\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,38 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.13, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.13, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[6.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Proxies": {
+              "target": "Package",
+              "version": "[6.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.13, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
