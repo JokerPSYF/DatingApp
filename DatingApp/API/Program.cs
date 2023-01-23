@@ -15,9 +15,13 @@ builder.Services.AddDbContext<DataContext>(options =>
     .UseLazyLoadingProxies()
     .UseSqlServer(connectionString));
 
+builder.Services.AddCors();
+
 builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
+
+app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
 
 // Configure the HTTP request pipeline.
 
