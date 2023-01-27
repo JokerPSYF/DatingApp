@@ -71,3 +71,5 @@ C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\obj\Debug\net6.0\refint\AP
 C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\obj\Debug\net6.0\API.pdb
 C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\obj\Debug\net6.0\API.genruntimeconfig.cache
 C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\obj\Debug\net6.0\ref\API.dll
+C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
