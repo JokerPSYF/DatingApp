@@ -31,11 +31,7 @@ C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\bin\Debug\net6.0\Microsoft
 C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
 C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
-C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\bin\Debug\net6.0\Microsoft.OpenApi.dll
 C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
-C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
 C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\bin\Debug\net6.0\System.Drawing.Common.dll
 C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
