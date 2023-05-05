@@ -69,3 +69,8 @@ C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\obj\Debug\net6.0\API.genru
 C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\obj\Debug\net6.0\ref\API.dll
 C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
 C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\obj\Debug\net6.0\staticwebassets\msbuild.API.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\obj\Debug\net6.0\staticwebassets\msbuild.build.API.props
+C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.API.props
+C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.API.props
+C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\obj\Debug\net6.0\staticwebassets.pack.json
