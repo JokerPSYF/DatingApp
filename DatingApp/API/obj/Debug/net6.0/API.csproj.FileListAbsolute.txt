@@ -74,3 +74,4 @@ C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\obj\Debug\net6.0\staticweb
 C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.API.props
 C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.API.props
 C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\tvasilev\Desktop\NgDemo\NgDemo\DatingApp\API\bin\Debug\net6.0\Data\UserSeedData.json
