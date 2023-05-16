@@ -1,3 +1,11 @@
 .dropdown-toggle, .dropdown-item {
     cursor: pointer;
 }
+
+a:hover {
+    color: gainsboro;
+}
+
+ a.nav-link.active {
+    color: gray;
+}
