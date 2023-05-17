@@ -19,7 +19,7 @@ export class NavComponent implements OnInit {
               private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    
+      
   }
 
   login() {
