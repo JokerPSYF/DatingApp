@@ -26,11 +26,8 @@ export class AccountService {
 
         const user = response;
         if(user){
-          console.log('user true');
-          localStorage.setItem('user', JSON.stringify(user));
-          this.currentUserSource.next(user);
-        }
-        
+          this.setCurrentUser(user);
+        }       
       })
     );
   }
@@ -39,17 +36,15 @@ export class AccountService {
     return this.http.post<User>(this.baseUrl + 'account/register', model).pipe(
       map(user => {
         if (user){ 
-        localStorage.setItem('user', JSON.stringify(user));
-        this.currentUserSource.next(user);
+          this.setCurrentUser(user);
         }
-        return user;
       }
     )
     )
   }
 
   setCurrentUser(user: User) {
-    console.log('account set current user');
+    localStorage.setItem('user', JSON.stringify(user));
     this.currentUserSource.next(user);
   }
 

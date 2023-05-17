@@ -9,3 +9,12 @@ a:hover {
  a.nav-link.active {
     color: gray;
 }
+
+img {
+    max-height: 50px;
+    border: 2px solid white;
+    border-radius:  25px;
+    display: inline;
+    width: 50px;
+    margin-right: 6px;
+}

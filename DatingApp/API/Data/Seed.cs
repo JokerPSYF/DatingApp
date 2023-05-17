@@ -13,9 +13,9 @@ namespace API.Data
         {
             if (await context.Users.AnyAsync()) return;
 
-            var userData = await File.ReadAllTextAsync("Data/UserSeedData.json");
+            string userData = await File.ReadAllTextAsync("Data/UserSeedData.json");
 
-            var option = new JsonSerializerOptions
+            JsonSerializerOptions option = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
                 Converters = { new DateOnlyJsonConverter() }
@@ -23,11 +23,11 @@ namespace API.Data
 
             try
             {
-                var users = JsonSerializer.Deserialize<List<AppUser>>(userData, options: option);
+                List<AppUser> users = JsonSerializer.Deserialize<List<AppUser>>(userData, options: option);
 
-                foreach (var user in users)
+                foreach (AppUser user in users)
                 {
-                    using var hmac = new HMACSHA512();
+                    using HMACSHA512 hmac = new HMACSHA512();
 
                     user.UserName = user.UserName.ToLower();
                     user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes("Password"));

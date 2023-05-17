@@ -4,7 +4,7 @@ using API.Extensions;
 using API.Middleware;
 using Microsoft.EntityFrameworkCore;
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
@@ -20,7 +20,7 @@ builder.Services.AddIdentityServices(builder.Configuration);
 
 builder.Services.AddEndpointsApiExplorer();
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
 app.UseMiddleware<ExceptionMiddleware>();
@@ -38,17 +38,17 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-using var scope = app.Services.CreateScope();
-var services = scope.ServiceProvider;
+using IServiceScope scope = app.Services.CreateScope();
+IServiceProvider services = scope.ServiceProvider;
 try
 {
-    var context = services.GetRequiredService<DataContext>();
+    DataContext context = services.GetRequiredService<DataContext>();
     await context.Database.MigrateAsync();
     await Seed.SeedUsers(context);
 }
 catch (Exception ex)
 {
-    var logger = services.GetService<ILogger<Program>>();
+    ILogger<Program> logger = services.GetService<ILogger<Program>>();
     logger.LogError(ex, "An error occured during migration");
 }
 

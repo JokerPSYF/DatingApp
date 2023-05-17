@@ -9,13 +9,10 @@ namespace API.Converters
         private const string DateFormat = "yyyy-MM-dd";
 
         public override DateOnly Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
-                DateOnly.ParseExact(reader.GetString()!, DateFormat, CultureInfo.InvariantCulture);
+            DateOnly.ParseExact(reader.GetString()!, DateFormat, CultureInfo.InvariantCulture);
 
-        public override void Write(Utf8JsonWriter writer, DateOnly value, JsonSerializerOptions options)
-        {
-            //writer.WriteValue(value.ToString(TimeFormat, CultureInfo.InvariantCulture));
+        public override void Write(Utf8JsonWriter writer, DateOnly value, JsonSerializerOptions options) =>
             writer.WriteStringValue(value.ToString(DateFormat, CultureInfo.InvariantCulture));
-        }
     }
 
 }
