@@ -350,4 +350,4 @@ MigrationBackup/
 .ionide/
 *.dll
 #secrets
-*appsettings
+*appsettings.json
