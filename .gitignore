@@ -351,3 +351,4 @@ MigrationBackup/
 *.dll
 #secrets
 /DatingApp/API/appsettings.json
+/DatingApp/API/appsettings.Development.json
