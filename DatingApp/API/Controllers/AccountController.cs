@@ -2,6 +2,7 @@
 using API.DTOs;
 using API.Entities;
 using API.Interfaces;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
@@ -12,12 +13,14 @@ namespace API.Controllers
     public class AccountController : BaseApiController
     {
         private readonly DataContext context;
+        private readonly IMapper mapper;
         private readonly ITokenService tokenService;
 
-        public AccountController(DataContext _context, ITokenService _tokenService)
+        public AccountController(DataContext _context, ITokenService _tokenService, IMapper mapper)
         {
 
             this.context = _context;
+            this.mapper = mapper;
             this.tokenService = _tokenService;
         }
 
@@ -26,15 +29,13 @@ namespace API.Controllers
         {
             if (await UserExists(registerDto.Username)) return BadRequest("Username is taken :(");
 
+            AppUser user = mapper.Map<AppUser>(registerDto);
 
             using HMACSHA512 hmac = new HMACSHA512();
 
-            AppUser user = new AppUser
-            {
-                UserName = registerDto.Username.ToLower(),
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
-                PasswordSalt = hmac.Key
-            };
+            user.UserName = registerDto.Username.ToLower();
+            user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password));
+            user.PasswordSalt = hmac.Key;
 
             await context.Users.AddAsync(user);
             await context.SaveChangesAsync();
@@ -42,7 +43,9 @@ namespace API.Controllers
             return new UserDto
             {
                 Username = user.UserName,
-                Token = tokenService.CreateToken(user)
+                Token = tokenService.CreateToken(user),
+                KnownAs = user.KnownAs,
+                Gender = user.Gender
             };
         }
 
