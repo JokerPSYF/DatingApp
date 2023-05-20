@@ -1,6 +1,7 @@
 ﻿using API.DTOs;
 using API.Entities;
 using API.Extensions;
+using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
 using CloudinaryDotNet.Actions;
@@ -26,9 +27,11 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
+        public async Task<ActionResult<PagedList<MemberDto>>> GetUsers([FromQuery] UserParams userParams)
         {
-            IEnumerable<MemberDto> users = await userRepository.GetMembersAsync();
+            PagedList<MemberDto> users = await userRepository.GetMembersAsync(userParams);
+
+            Response.AddPaginationHeader(new PaginationHeader(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages));
 
             return Ok(users);
         }
@@ -122,7 +125,7 @@ namespace API.Controllers
 
             if (photo.PublicId != null)
             {
-                var result = await photoService.DeletePhotoAsync(photo.PublicId);
+                DeletionResult result = await photoService.DeletePhotoAsync(photo.PublicId);
                 if (result.Error != null) return BadRequest(result.Error.Message);
             }
 
