@@ -29,12 +29,21 @@ namespace API.Data
 
         public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams)
         {
-            IQueryable<MemberDto> query = context.Users
-                                                 .ProjectTo<MemberDto>(mapper.ConfigurationProvider)
-                                                 .AsNoTracking();
+            IQueryable<AppUser> query = context.Users.AsQueryable();
+
+            query = query.Where(u => u.UserName != userParams.CurrentUsername);
+            query = query.Where(u => u.Gender == userParams.Gender);
+
+            DateOnly minDob = DateOnly.FromDateTime(DateTime.Today.AddYears(-userParams.MaxAge - 1));
+            DateOnly maxDob = DateOnly.FromDateTime(DateTime.Today.AddYears(-userParams.MinAge));
+
+            query = query.Where(u => minDob <= u.DateOfBirth && u.DateOfBirth <= maxDob);
 
 
-            return await PagedList<MemberDto>.CreateAsync(query, userParams.PageNumber, userParams.PageSize);
+            return await PagedList<MemberDto>.CreateAsync(query.AsNoTracking()
+                                                               .ProjectTo<MemberDto>(mapper.ConfigurationProvider),
+                                                          userParams.PageNumber,
+                                                          userParams.PageSize);
 
         }
 
