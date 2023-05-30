@@ -1,0 +1,5 @@
+.radio-buttons {
+    justify-content: end;
+    display: flex;
+    gap: 12px;
+}

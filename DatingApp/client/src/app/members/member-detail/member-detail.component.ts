@@ -17,7 +17,7 @@ export class MemberDetailComponent implements OnInit {
   constructor(private memberService: MembersService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.loadMember();
+    this. loadMembers();
     this.galleryOptions = [{
       width: '500px',
       height: '500px',
@@ -41,7 +41,7 @@ export class MemberDetailComponent implements OnInit {
     return imageUrls;
   }
 
-  loadMember() {
+   loadMembers() {
     const username = this.route.snapshot.paramMap.get('username');
     if (!username) return;
     this.memberService.getMember(username).subscribe({
