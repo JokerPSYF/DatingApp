@@ -4,6 +4,7 @@ import { User } from '../_models/user';
 import { AccountService } from '../_services/account.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { MembersService } from '../_services/members.service';
 
 @Component({
   selector: 'app-nav',
@@ -14,6 +15,7 @@ export class NavComponent implements OnInit {
   model: any = {};
   constructor(
     public accountService: AccountService,
+    public memberService: MembersService,
     private router: Router,
     private toastr: ToastrService
   ) { }
@@ -22,7 +24,13 @@ export class NavComponent implements OnInit {
 
   login() {
     this.accountService.login(this.model).subscribe({
-      next: () => this.router.navigateByUrl('/members'),
+      next: (user: User | undefined) => {
+        debugger;
+        if (user) {
+          this.memberService.updateUserAndParams(user);
+        }
+        this.router.navigateByUrl('/members')
+      },
       error: (error) => {
         if (Object.prototype.toString.call(error) === '[object Array]') {
           this.toastr.error(error);

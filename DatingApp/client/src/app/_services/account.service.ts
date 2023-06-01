@@ -15,31 +15,37 @@ export class AccountService {
   constructor(private http: HttpClient) { }
 
 
-  isLogged(){
+  isLogged() {
     return localStorage.length > 0 ? true : false;
   }
 
 
   login(model: any) {
+    debugger;
     return this.http.post<User>(this.baseUrl + 'account/login', model).pipe(
       map((response: User) => {
 
         const user = response;
-        if(user){
+
+        if (user) {
+          debugger;
           this.setCurrentUser(user);
-        }       
+          return user;
+        }
+
+        return;
       })
     );
   }
 
-  register(model: any){
+  register(model: any) {
     return this.http.post<User>(this.baseUrl + 'account/register', model).pipe(
       map(user => {
-        if (user){ 
+        if (user) {
           this.setCurrentUser(user);
         }
       }
-    )
+      )
     )
   }
 
@@ -49,8 +55,6 @@ export class AccountService {
   }
 
   logout() {
-    console.log('account logout');
-
     localStorage.removeItem('user');
     this.currentUserSource.next(null);
   }
