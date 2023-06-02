@@ -36,6 +36,7 @@ namespace API.Data
 
             DateOnly minDob = DateOnly.FromDateTime(DateTime.Today.AddYears(-userParams.MaxAge - 1));
             DateOnly maxDob = DateOnly.FromDateTime(DateTime.Today.AddYears(-userParams.MinAge));
+            DateOnly averDob = DateOnly.FromDateTime(DateTime.Today.AddYears(-userParams.MinAge));
 
             query = query.Where(u => minDob <= u.DateOfBirth && u.DateOfBirth <= maxDob);
 

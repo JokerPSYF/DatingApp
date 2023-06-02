@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tvasilev\\Desktop\\NgDemo\\NgDemo\\DatingApp\\API\\API.csproj": {}
+    "C:\\Users\\tvasilev\\Desktop\\MyProjects\\NgDemo\\DatingApp\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tvasilev\\Desktop\\NgDemo\\NgDemo\\DatingApp\\API\\API.csproj": {
+    "C:\\Users\\tvasilev\\Desktop\\MyProjects\\NgDemo\\DatingApp\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tvasilev\\Desktop\\NgDemo\\NgDemo\\DatingApp\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\tvasilev\\Desktop\\MyProjects\\NgDemo\\DatingApp\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\tvasilev\\Desktop\\NgDemo\\NgDemo\\DatingApp\\API\\API.csproj",
+        "projectPath": "C:\\Users\\tvasilev\\Desktop\\MyProjects\\NgDemo\\DatingApp\\API\\API.csproj",
         "packagesPath": "C:\\Users\\tvasilev\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tvasilev\\Desktop\\NgDemo\\NgDemo\\DatingApp\\API\\obj\\",
+        "outputPath": "C:\\Users\\tvasilev\\Desktop\\MyProjects\\NgDemo\\DatingApp\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tvasilev\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -108,7 +108,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
