@@ -4,7 +4,6 @@ using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -12,11 +11,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230516091257_firstMigration")]
-    partial class firstMigration
+    partial class DataContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,6 +78,50 @@ namespace API.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("API.Entities.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DateRead")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("MessageSent")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("RecipentDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("RecipentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RecipentUsername")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("SenderDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("SenderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SenderUsename")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RecipentId");
+
+                    b.HasIndex("SenderId");
+
+                    b.ToTable("Messages");
+                });
+
             modelBuilder.Entity("API.Entities.Photo", b =>
                 {
                     b.Property<int>("Id")
@@ -108,6 +149,40 @@ namespace API.Migrations
                     b.ToTable("Photos");
                 });
 
+            modelBuilder.Entity("API.Entities.UserLike", b =>
+                {
+                    b.Property<int>("SourceUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TargetUserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("SourceUserId", "TargetUserId");
+
+                    b.HasIndex("TargetUserId");
+
+                    b.ToTable("Likes");
+                });
+
+            modelBuilder.Entity("API.Entities.Message", b =>
+                {
+                    b.HasOne("API.Entities.AppUser", "Recipent")
+                        .WithMany("MessagesReceived")
+                        .HasForeignKey("RecipentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("API.Entities.AppUser", "Sender")
+                        .WithMany("MessagesSent")
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Recipent");
+
+                    b.Navigation("Sender");
+                });
+
             modelBuilder.Entity("API.Entities.Photo", b =>
                 {
                     b.HasOne("API.Entities.AppUser", "AppUser")
@@ -119,8 +194,35 @@ namespace API.Migrations
                     b.Navigation("AppUser");
                 });
 
+            modelBuilder.Entity("API.Entities.UserLike", b =>
+                {
+                    b.HasOne("API.Entities.AppUser", "SourceUser")
+                        .WithMany("LikedUsers")
+                        .HasForeignKey("SourceUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("API.Entities.AppUser", "TargetUser")
+                        .WithMany("LikedByUsers")
+                        .HasForeignKey("TargetUserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("SourceUser");
+
+                    b.Navigation("TargetUser");
+                });
+
             modelBuilder.Entity("API.Entities.AppUser", b =>
                 {
+                    b.Navigation("LikedByUsers");
+
+                    b.Navigation("LikedUsers");
+
+                    b.Navigation("MessagesReceived");
+
+                    b.Navigation("MessagesSent");
+
                     b.Navigation("Photos");
                 });
 #pragma warning restore 612, 618

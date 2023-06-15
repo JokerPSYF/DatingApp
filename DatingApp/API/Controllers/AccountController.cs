@@ -52,11 +52,9 @@ namespace API.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
-            AppUser user = await context.Users
+            AppUser user = await context.Users 
                                         .Include(x => x.Photos)
                                         .SingleOrDefaultAsync(x => x.UserName == loginDto.Username);
-
-            var one = 2;
 
             if (user == null) return Unauthorized("Invalid username");
 

@@ -1,0 +1,8 @@
+.radio-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.img-circle {
+    max-height: 50px;
+}

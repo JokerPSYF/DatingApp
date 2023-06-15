@@ -36,7 +36,6 @@ namespace API.Data
 
             DateOnly minDob = DateOnly.FromDateTime(DateTime.Today.AddYears(-userParams.MaxAge - 1));
             DateOnly maxDob = DateOnly.FromDateTime(DateTime.Today.AddYears(-userParams.MinAge));
-            DateOnly averDob = DateOnly.FromDateTime(DateTime.Today.AddYears(-userParams.MinAge));
 
             query = query.Where(u => minDob <= u.DateOfBirth && u.DateOfBirth <= maxDob);
 
@@ -78,7 +77,7 @@ namespace API.Data
             return await context.SaveChangesAsync() > 0;
         }
 
-        public async void Update(AppUser user)
+        public void Update(AppUser user)
         {
             context.Entry(user).State = EntityState.Modified;
         }

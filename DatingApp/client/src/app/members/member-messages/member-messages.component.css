@@ -1,0 +1,32 @@
+.card {
+    border: none;
+}
+
+.chat {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.chat li {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px dotted lightgrey;
+}
+
+.rounded-circle {
+    max-height: 50px;
+    ;
+}
+
+.scroll-box {
+    height: 57vh;
+    width: 856px;
+    overflow: auto;
+}
+
+@media only screen and (max-height: 800px) {
+    .scroll-box {
+        height: 66vh;
+    }
+}

@@ -22,10 +22,10 @@ export class MemberListComponent implements OnInit {
 
   ngOnInit(): void {
     //this.members$ = this.memberService.getMembers();
-    this. loadMembers();
+    this.loadMembers();
   }
 
-   loadMembers() {
+  loadMembers() {
     if (this.userParams) {
       this.memberService.setUserParams(this.userParams);
       this.memberService.getMembers(this.userParams).subscribe({
@@ -40,6 +40,7 @@ export class MemberListComponent implements OnInit {
   }
 
   resetFilters() {
+    debugger;
     this.userParams = this.memberService.resetUserParams();
     this.loadMembers();
   }
@@ -48,7 +49,7 @@ export class MemberListComponent implements OnInit {
     if (this.userParams && this.userParams?.pageNumber !== event.page) {
       this.userParams.pageNumber = event.page;
       this.memberService.setUserParams(this.userParams);
-      this. loadMembers();
+      this.loadMembers();
     }
   }
 }

@@ -21,7 +21,17 @@
 
 .ngx-gallery { display: inline-block; margin-bottom: 20px; }
 
-.ifno {
+.info {
     white-space: nowrap;
     overflow: hidden;
+}
+
+@media only screen and (max-height: 800px){
+    .img-thumbnail {
+        margin: 25px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 70%;
+        height: 70%;
+    }
 }

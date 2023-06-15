@@ -39,5 +39,10 @@ namespace API.Entities
         public virtual List<UserLike> LikedByUsers { get; set; }
 
         public virtual List<UserLike> LikedUsers { get; set; }
+
+
+        public virtual List<Message> MessagesSent { get; set; }
+
+        public virtual List<Message> MessagesReceived { get; set; }
     }
 }

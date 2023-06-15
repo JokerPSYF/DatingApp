@@ -21,14 +21,12 @@ export class AccountService {
 
 
   login(model: any) {
-    debugger;
     return this.http.post<User>(this.baseUrl + 'account/login', model).pipe(
       map((response: User) => {
 
         const user = response;
 
         if (user) {
-          debugger;
           this.setCurrentUser(user);
           return user;
         }
