@@ -1,5 +1,6 @@
 ﻿using API.Converters;
 using API.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 using System.Text;
@@ -9,9 +10,10 @@ namespace API.Data
 {
     public class Seed
     {
-        public static async Task SeedUsers(DataContext context)
+        public static async Task SeedUsers(UserManager<AppUser> userManager,
+                                           RoleManager<AppRole> roleManager)
         {
-            if (await context.Users.AnyAsync()) return;
+            if (await userManager.Users.AnyAsync()) return;
 
             string userData = await File.ReadAllTextAsync("Data/UserSeedData.json");
 
@@ -25,16 +27,33 @@ namespace API.Data
             {
                 List<AppUser> users = JsonSerializer.Deserialize<List<AppUser>>(userData, options: option);
 
+                List<AppRole> roles = new List<AppRole> 
+                {
+                    new AppRole {Name ="Member"},
+                    new AppRole {Name ="Admin"},
+                    new AppRole {Name ="Moderator"}
+                
+                };
+
+                foreach (var role in roles)
+                {
+                    await roleManager.CreateAsync(role);
+                }
+
                 foreach (AppUser user in users)
                 {
-                    using HMACSHA512 hmac = new HMACSHA512();
-
                     user.UserName = user.UserName.ToLower();
-                    user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes("Password"));
-                    user.PasswordSalt = hmac.Key;
-
-                    context.Users.Add(user);
+                    await userManager.CreateAsync(user, "Password");
+                    await userManager.AddToRoleAsync(user, "Member");
                 }
+
+                AppUser admin = new AppUser
+                {
+                    UserName = "admin"
+                };
+
+                await userManager.CreateAsync(admin, "Password");
+                await userManager.AddToRolesAsync(admin, new[] { "Admin", "Moderator" });
 
             }
             catch (Exception ex)
@@ -43,11 +62,6 @@ namespace API.Data
                 Console.WriteLine(ex?.InnerException?.Message);
                 Console.WriteLine(ex?.Message);
             }
-
-
-
-
-            await context.SaveChangesAsync();
         }
     }
 }

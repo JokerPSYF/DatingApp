@@ -1,19 +1,10 @@
+using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
 namespace API.Entities
 {
-    public class AppUser
+    public class AppUser : IdentityUser<int>
     {
-        [Key]
-        public int Id { get; set; }
-
-        [Required]
-        public string UserName { get; set; }
-
-        public byte[] PasswordHash { get; set; }
-
-        public byte[] PasswordSalt { get; set; }
-
         public DateOnly DateOfBirth { get; set; }
 
         public string KnownAs { get; set; }
@@ -44,5 +35,7 @@ namespace API.Entities
         public virtual List<Message> MessagesSent { get; set; }
 
         public virtual List<Message> MessagesReceived { get; set; }
+
+        public virtual ICollection<AppUserRole> UserRoles { get; set; }
     }
 }
