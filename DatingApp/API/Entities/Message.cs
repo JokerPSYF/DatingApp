@@ -20,7 +20,7 @@
 
         public DateTime? DateRead { get; set; }
 
-        public DateTime MessageSent { get; set; }
+        public DateTime MessageSent { get; set; } = DateTime.UtcNow;
 
         public bool SenderDeleted { get; set; }
 

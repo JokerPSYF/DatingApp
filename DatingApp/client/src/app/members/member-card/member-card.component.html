@@ -1,6 +1,7 @@
-<div class="card mb-4" *ngIf="member" >
+<div class="card mb-4" *ngIf="member">
     <div class="card-img-wrapper">
-        <img src="{{member.photoUrl || 'assets/user.png'}}" alt="{{member.knownAs}}" class="card-img-top" width="185" height="185">
+        <img src="{{member.photoUrl || 'assets/user.png'}}" alt="{{member.knownAs}}" class="card-img-top" width="185"
+            height="185">
         <ul class="list-inline member-icons animate text-center">
             <li class="list-inline-item">
                 <button routerLink="/members/{{member.userName}}" class="btn btn-primary">
@@ -13,9 +14,8 @@
                 </button>
             </li>
             <li class="list-inline-item">
-                <button class="btn btn-primary"
-                        routerLink="/members/{{member.userName}}"
-                        [queryParams]="{tab: 'Messages'}">
+                <button class="btn btn-primary" routerLink="/members/{{member.userName}}"
+                    [queryParams]="{tab: 'Messages'}">
                     <i class="fa fa-envelope"></i>
                 </button>
             </li>
@@ -24,7 +24,9 @@
     </div>
     <div class="card-body p-1">
         <h6 class="card-title text-center mb-1 knownAsTitle">
-            <i class="fa fa-user me-2"></i>
+            <span [class.is-online]="(presenceService.onlineUsers$ | async)?.includes(member.userName)">
+                <i class="fa fa-user me-2"></i>
+            </span>
             {{member.age}}, {{member.knownAs}}
         </h6>
         <p class="card-text text-muted text-center city">{{member.city}}</p>

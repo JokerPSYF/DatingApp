@@ -23,10 +23,10 @@ export class MembersService {
 
   constructor(private http: HttpClient, private accountService: AccountService) {
     this.accountService.currentUser$.pipe(take(1)).subscribe({
-      next: user => {
-        if (user) {
-          this.userParams = new UserParams(user);
-          this.user = user;
+      next: currUser => {
+        if (currUser) {
+          this.userParams = new UserParams(currUser);
+          this.user = currUser;
         }
       }
     })
@@ -46,7 +46,6 @@ export class MembersService {
   }
 
   resetUserParams() {
-    debugger;
     if (this.user) {
       this.userParams = new UserParams(this.user);
       return this.userParams;

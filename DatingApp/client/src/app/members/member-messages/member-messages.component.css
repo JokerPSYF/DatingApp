@@ -16,13 +16,51 @@
 
 .rounded-circle {
     max-height: 50px;
-    ;
+    border-radius:  25px;
+    display: inline;
+    width: 50px;
+    margin-right: 6px;
 }
 
+.curr-user{
+    display: grid;
+    justify-content: end;
+}
+
+.header {
+    margin-right: 8px;
+}
+
+
+.curr-user > .header {
+    text-align: end;
+}
 .scroll-box {
     height: 57vh;
     width: 856px;
     overflow: auto;
+    scroll-behavior: smooth;
+}
+
+.message-content {
+    background-color: rgba(214, 208, 208, 0.445);
+    display: inline-block;
+    margin-top: 2px;
+    border-radius: 25px;
+    padding: 8px;
+    
+}
+
+.girl-color{
+    background-color:  pink;
+}
+
+.boy-color{
+    background-color:  lightblue;
+} 
+
+.row-end {
+   justify-self: end;
 }
 
 @media only screen and (max-height: 800px) {

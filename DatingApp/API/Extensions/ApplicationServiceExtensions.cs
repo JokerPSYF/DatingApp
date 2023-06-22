@@ -2,6 +2,7 @@
 using API.Helpers;
 using API.Interfaces;
 using API.Services;
+using API.SignalR;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Extensions
@@ -19,15 +20,17 @@ namespace API.Extensions
                       .UseSqlServer(connectionString));
 
             services.AddCors();
-            services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddSignalR();
+            services.AddScoped<LogUserActivity>();
+            services.AddSingleton<PresenceTracker>();
+            services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPhotoService, PhotoService>();
             services.AddScoped<ITokenService, TokenService>();
-            services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<LogUserActivity>();
             services.AddScoped<ILikesRepository, LikesRespository>();
             services.AddScoped<IMessageRepository, MessageRepository>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
 
             return services;
         }

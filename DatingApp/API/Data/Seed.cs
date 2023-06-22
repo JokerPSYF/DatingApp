@@ -2,8 +2,6 @@
 using API.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography;
-using System.Text;
 using System.Text.Json;
 
 namespace API.Data

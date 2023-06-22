@@ -18,7 +18,6 @@ export class RolesModalComponent implements OnInit {
 
   updateChecked(checkedValue: string) {
     const index = this.selectedRoles.indexOf(checkedValue);
-    debugger;
     if (index !== -1) {
       this.selectedRoles.splice(index, 1)
     } else {

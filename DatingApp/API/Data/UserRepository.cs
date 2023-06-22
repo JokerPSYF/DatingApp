@@ -21,10 +21,12 @@ namespace API.Data
 
         public async Task<MemberDto> GetMemberAsync(string username)
         {
-            return await context.Users
+           var user = await context.Users
                                 .Where(x => x.UserName == username)
                                 .ProjectTo<MemberDto>(mapper.ConfigurationProvider)
                                 .SingleOrDefaultAsync();
+
+            return user;
         }
 
         public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams)

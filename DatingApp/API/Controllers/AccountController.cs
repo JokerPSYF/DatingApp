@@ -13,11 +13,16 @@ namespace API.Controllers
     {
         private readonly IMapper mapper;
         private readonly UserManager<AppUser> userManager;
+        //private readonly SignInManager<AppUser> signInManager;
         private readonly ITokenService tokenService;
 
-        public AccountController(UserManager<AppUser> userManager, ITokenService _tokenService, IMapper mapper)
+        public AccountController(UserManager<AppUser> userManager,
+                                 //SignInManager<AppUser> signInManager,
+                                 ITokenService _tokenService,
+                                 IMapper mapper)
         {
             this.userManager = userManager;
+            //this.signInManager = signInManager;
             this.mapper = mapper;
             this.tokenService = _tokenService;
         }
@@ -73,6 +78,18 @@ namespace API.Controllers
                 KnownAs = user.KnownAs,
                 Gender = user.Gender
             };
+
+            //try
+            //{
+            //    var lastResult = await signInManager.PasswordSignInAsync(userDto.Username, loginDto.Password, false, lockoutOnFailure: false);
+            //    if (!lastResult.Succeeded) { Console.WriteLine("Problem"); }
+            //}
+            //catch (Exception e)
+            //{
+            //    await Console.Out.WriteLineAsync(e.Message);
+            //}
+            
+
 
             return userDto;
         }

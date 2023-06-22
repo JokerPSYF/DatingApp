@@ -5,4 +5,8 @@
 
 .img-circle {
     max-height: 50px;
+    border-radius:  25px;
+    display: inline;
+    width: 50px;
+    margin-right: 6px;
 }
