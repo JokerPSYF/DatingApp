@@ -16,29 +16,25 @@ export class AccountService {
   constructor(private http: HttpClient,
     private presenceService: PresenceService) { }
 
+    login(model: any) {
+      return this.http.post<User>(this.baseUrl + 'account/login', model).pipe(
+        map((response: User) => {
+          const user = response;
+          if (user) {
+            this.setCurrentUser(user);
+          }  
+        })
+      );
+    }
+  
+
 
   isLogged() {
     return localStorage.length > 0 ? true : false;
   }
 
 
-  login(model: any) {
-    return this.http.post<User>(this.baseUrl + 'account/login', model).pipe(
-      map((response: User) => {
-
-        const user = response;
-
-        if (user) {
-          this.setCurrentUser(user);
-          console.log(user);
-          return user;
-        }
-
-        return;
-      })
-    );
-  }
-
+  
   register(model: any) {
     return this.http.post<User>(this.baseUrl + 'account/register', model).pipe(
       map(user => {

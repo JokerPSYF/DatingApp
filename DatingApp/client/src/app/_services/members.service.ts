@@ -23,18 +23,13 @@ export class MembersService {
 
   constructor(private http: HttpClient, private accountService: AccountService) {
     this.accountService.currentUser$.pipe(take(1)).subscribe({
-      next: currUser => {
-        if (currUser) {
-          this.userParams = new UserParams(currUser);
-          this.user = currUser;
+      next: user => {
+        if (user) {
+          this.userParams = new UserParams(user);
+          this.user = user;
         }
       }
     })
-  }
-
-  updateUserAndParams(user: User) {
-    this.userParams = new UserParams(user);
-    this.user = user;
   }
 
   getUserParams() {
@@ -44,7 +39,7 @@ export class MembersService {
   setUserParams(params: UserParams) {
     this.userParams = params;
   }
-
+ 
   resetUserParams() {
     if (this.user) {
       this.userParams = new UserParams(this.user);
@@ -55,6 +50,7 @@ export class MembersService {
 
   getMembers(userParams: UserParams) {
     const response = this.memberCache.get(Object.values(userParams).join('-'));
+    
     if (response) return of(response);
 
     let params = getPaginationHeaders(userParams.pageNumber, userParams.pageSize);

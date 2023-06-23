@@ -89,8 +89,6 @@ namespace API.Controllers
             //    await Console.Out.WriteLineAsync(e.Message);
             //}
             
-
-
             return userDto;
         }
 

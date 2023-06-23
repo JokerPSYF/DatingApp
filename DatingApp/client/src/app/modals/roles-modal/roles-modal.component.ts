@@ -23,8 +23,6 @@ export class RolesModalComponent implements OnInit {
     } else {
       this.selectedRoles.push(checkedValue)
     }
-
-     console.log(this.selectedRoles);
   }
 
 }

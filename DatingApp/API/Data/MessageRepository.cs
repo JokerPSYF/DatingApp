@@ -76,9 +76,7 @@ namespace API.Data
 
         public async Task<IEnumerable<MessageDto>> GetMessageThread(string currentUserName, string recipientUserName)
         {
-            List<Message> messages = await context.Messages
-                .Include(u => u.Sender).ThenInclude(p => p.Photos)
-                .Include(u => u.Recipent).ThenInclude(p => p.Photos)
+            IQueryable<Message> messages =  context.Messages
                 .Where(m => m.RecipentUsername == currentUserName
                          && m.RecipentDeleted == false
                          && m.SenderUsename == recipientUserName
@@ -87,7 +85,7 @@ namespace API.Data
                          && m.SenderUsename == currentUserName)
                 //.OrderByDescending(m => m.MessageSent)
                 .OrderBy(m => m.MessageSent)
-                .ToListAsync();
+                .AsQueryable();
 
             List<Message> unreadMessages = messages
                 .Where(m => m.DateRead == null && m.RecipentUsername == currentUserName).ToList();
@@ -98,11 +96,9 @@ namespace API.Data
                 {
                     message.DateRead = DateTime.UtcNow;
                 }
-
-                await context.SaveChangesAsync();
             }
 
-            return mapper.Map<IEnumerable<MessageDto>>(messages);
+            return await messages.ProjectTo<MessageDto>(mapper.ConfigurationProvider).ToListAsync();
         }
 
         public void RemoveConnection(Connection connection)
@@ -111,10 +107,6 @@ namespace API.Data
             //context.SaveChanges();
         }
 
-        public async Task<bool> SaveAllAsync()
-        {
-            return await context.SaveChangesAsync() > 0;
-        }
 
         public async Task<Group> GetGroupForConnection(string connectionId)
         {

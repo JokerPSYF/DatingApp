@@ -23,12 +23,10 @@ namespace API.Extensions
             services.AddSignalR();
             services.AddScoped<LogUserActivity>();
             services.AddSingleton<PresenceTracker>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPhotoService, PhotoService>();
             services.AddScoped<ITokenService, TokenService>();
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<ILikesRepository, LikesRespository>();
-            services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
 

@@ -38,8 +38,7 @@
 .scroll-box {
     height: 57vh;
     width: 856px;
-    overflow: auto;
-    scroll-behavior: smooth;
+    overflow-y: auto;
 }
 
 .message-content {
