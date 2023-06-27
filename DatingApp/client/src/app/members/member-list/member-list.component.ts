@@ -26,7 +26,6 @@ export class MemberListComponent implements OnInit {
   }
 
   loadMembers() {
-    debugger;
     if (this.userParams) {
       this.memberService.setUserParams(this.userParams);
       this.memberService.getMembers(this.userParams).subscribe({

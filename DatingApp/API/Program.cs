@@ -43,9 +43,13 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 app.MapControllers();
 app.MapHub<PresenceHub>("hubs/presence");
 app.MapHub<MessageHub>("hubs/message");
+app.MapFallbackToController("Index", "Fallback");
 
 using IServiceScope scope = app.Services.CreateScope();
 IServiceProvider services = scope.ServiceProvider;
@@ -54,9 +58,10 @@ try
     DataContext context = services.GetRequiredService<DataContext>();
     UserManager<AppUser> userManager = services.GetRequiredService<UserManager<AppUser>>();
     RoleManager<AppRole> roleManager = services.GetRequiredService<RoleManager<AppRole>>();
+    AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
     //SignInManager<AppRole> signInManager = services.GetRequiredService<SignInManager<AppRole>>();
     await context.Database.MigrateAsync();
-    await context.Database.ExecuteSqlRawAsync("TRUNCATE TABLE [Connections]");
+    await Seed.ClearConnections(context);
     await Seed.SeedUsers(userManager, roleManager);
 }
 catch (Exception ex)

@@ -17,7 +17,7 @@ namespace API.Extensions
             services.AddDbContext<DataContext>(options =>
                 options
                       .UseLazyLoadingProxies()
-                      .UseSqlServer(connectionString));
+                      .UseNpgsql(connectionString));
 
             services.AddCors();
             services.AddSignalR();
