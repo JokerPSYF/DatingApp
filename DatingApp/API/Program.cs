@@ -58,7 +58,7 @@ try
     DataContext context = services.GetRequiredService<DataContext>();
     UserManager<AppUser> userManager = services.GetRequiredService<UserManager<AppUser>>();
     RoleManager<AppRole> roleManager = services.GetRequiredService<RoleManager<AppRole>>();
-    AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+    //AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
     //SignInManager<AppRole> signInManager = services.GetRequiredService<SignInManager<AppRole>>();
     await context.Database.MigrateAsync();
     await Seed.ClearConnections(context);

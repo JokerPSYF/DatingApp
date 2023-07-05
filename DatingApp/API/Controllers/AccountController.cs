@@ -78,16 +78,6 @@ namespace API.Controllers
                 KnownAs = user.KnownAs,
                 Gender = user.Gender
             };
-
-            //try
-            //{
-            //    var lastResult = await signInManager.PasswordSignInAsync(userDto.Username, loginDto.Password, false, lockoutOnFailure: false);
-            //    if (!lastResult.Succeeded) { Console.WriteLine("Problem"); }
-            //}
-            //catch (Exception e)
-            //{
-            //    await Console.Out.WriteLineAsync(e.Message);
-            //}
             
             return userDto;
         }
