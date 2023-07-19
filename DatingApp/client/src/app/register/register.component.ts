@@ -4,7 +4,6 @@ import { AccountService } from '../_services/account.service';
 import {
   AbstractControl,
   FormBuilder,
-  FormControl,
   FormGroup,
   ValidatorFn,
   Validators,
@@ -66,6 +65,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    debugger;
     const dob = this.getDateOnly(this.registerForm.controls['dateOfBirth'].value);
     const values ={...this.registerForm.value, dateOfBirth: dob}
     this.accountService.register(values).subscribe({
